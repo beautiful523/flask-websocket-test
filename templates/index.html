@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>老周--flask使用websocket</title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.js"></script>
+</head>
+<body>
+    {#  这是一个显示时间的div  #}
+    <div id="time" style="width: 300px;height: 50px;background-color: #0C0C0C;
+    color: white;text-align: center;line-height: 50px;margin-left: 40%;font-size: 20px"></div>
+
+    {#  接受后端传过来的数据（时间）  #}
+    <script>
+            var ws = new WebSocket("ws://127.0.0.1:5000/echo");
+            ws.onmessage = function (event) {
+                content = document.createTextNode(event.data);
+                $("#time").html(content);
+            };
+
+    </script>
+    </body>
+</html>
